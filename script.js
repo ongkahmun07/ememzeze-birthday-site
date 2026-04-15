@@ -2,6 +2,8 @@ const memoryUpload = document.getElementById("memoryUpload");
 const memoryGallery = document.getElementById("memoryGallery");
 const addMoreMemoriesButton = document.getElementById("addMoreMemoriesButton");
 const clearMemoriesButton = document.getElementById("clearMemoriesButton");
+const sectionButtons = Array.from(document.querySelectorAll(".section-button"));
+const panels = Array.from(document.querySelectorAll(".content-stack .panel"));
 const letterTitle = document.getElementById("letterTitle");
 const letterMessage = document.getElementById("letterMessage");
 const previewTitle = document.getElementById("previewTitle");
@@ -12,6 +14,16 @@ const saveStatus = document.getElementById("saveStatus");
 const LETTER_STORAGE_KEY = "bestie-birthday-letter";
 const MEMORIES_STORAGE_KEY = "birthday-memory-gallery";
 const galleryTilts = ["-3deg", "2deg", "-2deg", "3deg", "-1deg", "1.5deg"];
+
+function openPanel(targetId) {
+  sectionButtons.forEach((button) => {
+    button.classList.toggle("is-active", button.dataset.target === targetId);
+  });
+
+  panels.forEach((panel) => {
+    panel.classList.toggle("is-visible", panel.id === targetId);
+  });
+}
 
 function updatePreview() {
   const title = letterTitle.value.trim();
@@ -175,9 +187,16 @@ clearMemoriesButton.addEventListener("click", () => {
   showMemoryPlaceholder();
 });
 
+sectionButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    openPanel(button.dataset.target);
+  });
+});
+
 letterTitle.addEventListener("input", updatePreview);
 letterMessage.addEventListener("input", updatePreview);
 saveLetterButton.addEventListener("click", saveLetter);
 
+openPanel("memoriesPanel");
 loadSavedMemories();
 loadSavedLetter();

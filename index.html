@@ -37,8 +37,19 @@
       </div>
     </section>
 
-    <section class="content-grid">
-      <section class="panel memories-panel" id="memories">
+    <section class="section-switcher" aria-label="Birthday sections">
+      <button class="section-button is-active" id="openMemoriesButton" type="button" data-target="memoriesPanel">
+        <span class="section-button-label">Memory Album</span>
+        <span class="section-button-text">Open your scrapbook of photos together.</span>
+      </button>
+      <button class="section-button" id="openLetterButton" type="button" data-target="letterPanel">
+        <span class="section-button-label">Birthday Letter</span>
+        <span class="section-button-text">Open the letter and write from the heart.</span>
+      </button>
+    </section>
+
+    <section class="content-stack">
+      <section class="panel memories-panel is-visible" id="memoriesPanel">
         <div class="panel-heading">
           <p class="section-label">Memory Album</p>
           <h2>Upload your favorite photos together</h2>
@@ -67,7 +78,7 @@
         </div>
       </section>
 
-      <section class="panel letter-panel" id="letter">
+      <section class="panel letter-panel" id="letterPanel">
         <div class="panel-heading">
           <p class="section-label">Birthday Letter</p>
           <h2>Write her something beautiful</h2>
