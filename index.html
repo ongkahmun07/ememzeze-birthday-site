@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, ememzeze</title>
+  <meta name="description" content="A pastel birthday website filled with cute cats, photo memories, and a heartfelt letter.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="background-blush background-blush-left"></div>
+  <div class="background-blush background-blush-right"></div>
+  <div class="sparkles" aria-hidden="true"></div>
+
+  <main class="birthday-page">
+    <section class="hero-card">
+      <div class="hero-copy">
+        <p class="eyebrow">For My Favorite Human</p>
+        <h1>Happy Birthday, ememzeze</h1>
+        <p class="hero-text">
+          A tiny pastel corner of the internet just for you, with sweet little cat friends, our favorite memories, and a letter straight from my heart.
+        </p>
+      </div>
+
+      <div class="hero-scene">
+        <label class="hero-photo-frame" for="heroPhotoUpload">
+          <input id="heroPhotoUpload" type="file" accept="image/*">
+          <img id="heroPhotoPreview" alt="Birthday hero memory">
+          <span class="hero-photo-placeholder" id="heroPhotoPlaceholder">
+            <span class="hero-photo-icon">+</span>
+            <span class="hero-photo-title">Add a favorite picture</span>
+            <span class="hero-photo-text">Tap here to place a special memory at the top.</span>
+          </span>
+        </label>
+        <div class="mini-cat mini-cat-one"></div>
+        <div class="mini-cat mini-cat-two"></div>
+        <div class="floating-heart heart-one"></div>
+        <div class="floating-heart heart-two"></div>
+        <div class="floating-heart heart-three"></div>
+      </div>
+    </section>
+
+    <section class="content-grid">
+      <section class="panel memories-panel" id="memories">
+        <div class="panel-heading">
+          <p class="section-label">Memory Album</p>
+          <h2>Upload your favorite photos together</h2>
+          <p class="section-text">
+            Pick a few sweet pictures and this page will turn them into a soft little gallery of your friendship.
+          </p>
+        </div>
+
+        <label class="upload-dropzone" for="memoryUpload">
+          <input id="memoryUpload" type="file" accept="image/*" multiple>
+          <span class="upload-icon">+</span>
+          <span class="upload-title">Add memory photos</span>
+          <span class="upload-text">Choose one or more images to create your scrapbook gallery, then come back anytime to add more.</span>
+        </label>
+
+        <div class="memory-actions">
+          <button class="primary-button" id="addMoreMemoriesButton" type="button">Add More Pictures</button>
+          <button class="secondary-button" id="clearMemoriesButton" type="button">Clear Gallery</button>
+        </div>
+
+        <div class="memory-gallery" id="memoryGallery">
+          <article class="memory-placeholder">
+            <p>No photos yet.</p>
+            <span>Your uploaded memories will appear here.</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel letter-panel" id="letter">
+        <div class="panel-heading">
+          <p class="section-label">Birthday Letter</p>
+          <h2>Write her something beautiful</h2>
+          <p class="section-text">
+            This section is yours. Start with a few loving lines and the page will keep them right here in the browser while you decorate.
+          </p>
+        </div>
+
+        <div class="letter-shell">
+          <label class="field">
+            <span class="field-label">Letter title</span>
+            <input id="letterTitle" type="text" placeholder="To my sweetest best friend...">
+          </label>
+
+          <label class="field">
+            <span class="field-label">Your letter</span>
+            <textarea id="letterMessage" rows="12" placeholder="Write about your favorite memories, what you love about her, and your birthday wishes..."></textarea>
+          </label>
+
+          <div class="letter-actions">
+            <button class="primary-button" id="saveLetterButton" type="button">Save Letter</button>
+            <p class="save-status" id="saveStatus">Nothing saved yet.</p>
+          </div>
+
+          <article class="letter-preview">
+            <p class="preview-label">Preview</p>
+            <h3 id="previewTitle">Your title will appear here</h3>
+            <p id="previewMessage">Start writing and your birthday letter preview will bloom here.</p>
+          </article>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
