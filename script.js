@@ -197,6 +197,5 @@ letterTitle.addEventListener("input", updatePreview);
 letterMessage.addEventListener("input", updatePreview);
 saveLetterButton.addEventListener("click", saveLetter);
 
-openPanel("memoriesPanel");
 loadSavedMemories();
 loadSavedLetter();
