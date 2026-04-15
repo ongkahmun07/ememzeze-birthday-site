@@ -30,7 +30,7 @@ function updatePreview() {
   const message = letterMessage.value.trim();
 
   previewTitle.textContent = title || "Your title will appear here";
-  previewMessage.textContent = message || "Start writing and your birthday letter preview will bloom here.";
+  previewMessage.textContent = message || "Start writing and your DEAR HUAN preview will bloom here.";
 }
 
 function setSaveStatus(message) {
