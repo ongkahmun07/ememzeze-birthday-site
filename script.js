@@ -2,9 +2,6 @@ const memoryUpload = document.getElementById("memoryUpload");
 const memoryGallery = document.getElementById("memoryGallery");
 const addMoreMemoriesButton = document.getElementById("addMoreMemoriesButton");
 const clearMemoriesButton = document.getElementById("clearMemoriesButton");
-const heroPhotoUpload = document.getElementById("heroPhotoUpload");
-const heroPhotoPreview = document.getElementById("heroPhotoPreview");
-const heroPhotoPlaceholder = document.getElementById("heroPhotoPlaceholder");
 const letterTitle = document.getElementById("letterTitle");
 const letterMessage = document.getElementById("letterMessage");
 const previewTitle = document.getElementById("previewTitle");
@@ -13,7 +10,6 @@ const saveLetterButton = document.getElementById("saveLetterButton");
 const saveStatus = document.getElementById("saveStatus");
 
 const LETTER_STORAGE_KEY = "bestie-birthday-letter";
-const HERO_PHOTO_STORAGE_KEY = "birthday-hero-photo";
 const MEMORIES_STORAGE_KEY = "birthday-memory-gallery";
 const galleryTilts = ["-3deg", "2deg", "-2deg", "3deg", "-1deg", "1.5deg"];
 
@@ -27,19 +23,6 @@ function updatePreview() {
 
 function setSaveStatus(message) {
   saveStatus.textContent = message;
-}
-
-function showHeroPhoto(src) {
-  if (!src) {
-    heroPhotoPreview.removeAttribute("src");
-    heroPhotoPreview.style.display = "none";
-    heroPhotoPlaceholder.style.display = "grid";
-    return;
-  }
-
-  heroPhotoPreview.src = src;
-  heroPhotoPreview.style.display = "block";
-  heroPhotoPlaceholder.style.display = "none";
 }
 
 function createMemoryCard(memory, index) {
@@ -111,11 +94,6 @@ function getSavedMemories() {
   } catch {
     return [];
   }
-}
-
-function loadSavedHeroPhoto() {
-  const savedPhoto = localStorage.getItem(HERO_PHOTO_STORAGE_KEY);
-  showHeroPhoto(savedPhoto || "");
 }
 
 function saveLetter() {
@@ -197,26 +175,9 @@ clearMemoriesButton.addEventListener("click", () => {
   showMemoryPlaceholder();
 });
 
-heroPhotoUpload.addEventListener("change", (event) => {
-  const [file] = Array.from(event.target.files || []);
-  if (!file || !file.type.startsWith("image/")) {
-    return;
-  }
-
-  const reader = new FileReader();
-  reader.addEventListener("load", () => {
-    const result = typeof reader.result === "string" ? reader.result : "";
-    localStorage.setItem(HERO_PHOTO_STORAGE_KEY, result);
-    showHeroPhoto(result);
-  });
-
-  reader.readAsDataURL(file);
-});
-
 letterTitle.addEventListener("input", updatePreview);
 letterMessage.addEventListener("input", updatePreview);
 saveLetterButton.addEventListener("click", saveLetter);
 
-loadSavedHeroPhoto();
 loadSavedMemories();
 loadSavedLetter();

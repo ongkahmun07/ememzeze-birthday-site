@@ -197,7 +197,6 @@ h3 {
     linear-gradient(135deg, rgba(255, 215, 232, 0.88), rgba(255, 238, 172, 0.88));
   border: 3px solid rgba(255, 255, 255, 0.82);
   box-shadow: 0 20px 40px rgba(212, 160, 120, 0.18);
-  cursor: pointer;
   z-index: 1;
 }
 
@@ -209,57 +208,15 @@ h3 {
   border-radius: 42px;
 }
 
-.hero-photo-frame input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-
-#heroPhotoPreview,
-.hero-photo-placeholder {
+.hero-photo-static {
   position: absolute;
   inset: 12px;
-  border-radius: 26px;
-}
-
-#heroPhotoPreview {
   width: calc(100% - 24px);
   height: calc(100% - 24px);
   object-fit: cover;
-  display: none;
+  border-radius: 26px;
+  display: block;
   background: rgba(255, 255, 255, 0.6);
-}
-
-.hero-photo-placeholder {
-  display: grid;
-  place-items: center;
-  text-align: center;
-  gap: 8px;
-  padding: 24px;
-  background: linear-gradient(180deg, rgba(255, 248, 229, 0.88), rgba(255, 239, 246, 0.9));
-  color: var(--muted);
-}
-
-.hero-photo-icon {
-  display: grid;
-  place-items: center;
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  background: white;
-  color: var(--petal-deep);
-  font-size: 2rem;
-  font-weight: 700;
-}
-
-.hero-photo-title {
-  font-family: "Baloo 2", sans-serif;
-  font-size: 1.6rem;
-  color: #805463;
-}
-
-.hero-photo-text {
-  line-height: 1.6;
 }
 
 .mini-cat {
