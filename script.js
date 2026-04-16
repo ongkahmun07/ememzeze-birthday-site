@@ -14,6 +14,10 @@ const saveStatus = document.getElementById("saveStatus");
 const LETTER_STORAGE_KEY = "bestie-birthday-letter";
 const MEMORIES_STORAGE_KEY = "birthday-memory-gallery";
 const galleryTilts = ["-3deg", "2deg", "-2deg", "3deg", "-1deg", "1.5deg"];
+const sharedMemories = Array.from({ length: 28 }, (_, index) => ({
+  name: `memory ${String(index + 1).padStart(2, "0")}`,
+  src: `assets/memories/memory-${String(index + 1).padStart(2, "0")}.jpeg`,
+}));
 
 function openPanel(targetId) {
   sectionButtons.forEach((button) => {
@@ -42,7 +46,7 @@ function createMemoryCard(memory, index) {
   card.className = "memory-card";
   card.style.setProperty("--tilt", galleryTilts[index % galleryTilts.length]);
   card.innerHTML = `
-    <img src="${memory.src}" alt="Memory upload ${index + 1}">
+    <img src="${memory.src}" alt="${memory.name}">
     <p class="memory-caption">${memory.name}</p>
   `;
   return card;
@@ -55,38 +59,6 @@ function showMemoryPlaceholder() {
       <span>Your uploaded memories will appear here.</span>
     </article>
   `;
-}
-
-function loadSavedMemories() {
-  const saved = localStorage.getItem(MEMORIES_STORAGE_KEY);
-
-  if (!saved) {
-    showMemoryPlaceholder();
-    return;
-  }
-
-  try {
-    const memories = JSON.parse(saved);
-    if (!Array.isArray(memories) || memories.length === 0) {
-      showMemoryPlaceholder();
-      return;
-    }
-
-    memoryGallery.innerHTML = "";
-    memories.forEach((memory, index) => {
-      if (!memory?.src) {
-        return;
-      }
-
-      memoryGallery.appendChild(createMemoryCard(memory, index));
-    });
-
-    if (!memoryGallery.children.length) {
-      showMemoryPlaceholder();
-    }
-  } catch {
-    showMemoryPlaceholder();
-  }
 }
 
 function saveMemories(memories) {
@@ -106,6 +78,32 @@ function getSavedMemories() {
   } catch {
     return [];
   }
+}
+
+function renderMemoryGallery() {
+  const allMemories = [...sharedMemories, ...getSavedMemories()];
+
+  if (!allMemories.length) {
+    showMemoryPlaceholder();
+    return;
+  }
+
+  memoryGallery.innerHTML = "";
+  allMemories.forEach((memory, index) => {
+    if (!memory?.src) {
+      return;
+    }
+
+    memoryGallery.appendChild(createMemoryCard(memory, index));
+  });
+
+  if (!memoryGallery.children.length) {
+    showMemoryPlaceholder();
+  }
+}
+
+function loadSavedMemories() {
+  renderMemoryGallery();
 }
 
 function saveLetter() {
@@ -139,15 +137,10 @@ function loadSavedLetter() {
 }
 
 function renderGallery(files) {
-  const existingMemories = getSavedMemories();
   const validFiles = files.filter((file) => file.type.startsWith("image/"));
 
   if (!validFiles.length) {
     return;
-  }
-
-  if (!existingMemories.length) {
-    memoryGallery.innerHTML = "";
   }
 
   validFiles.forEach((file) => {
@@ -164,8 +157,7 @@ function renderGallery(files) {
 
       const nextMemories = [...getSavedMemories(), { name: file.name, src }];
       saveMemories(nextMemories);
-      const card = createMemoryCard({ name: file.name, src }, nextMemories.length - 1);
-      memoryGallery.appendChild(card);
+      renderMemoryGallery();
     });
 
     reader.readAsDataURL(file);
@@ -184,7 +176,7 @@ addMoreMemoriesButton.addEventListener("click", () => {
 
 clearMemoriesButton.addEventListener("click", () => {
   localStorage.removeItem(MEMORIES_STORAGE_KEY);
-  showMemoryPlaceholder();
+  renderMemoryGallery();
 });
 
 sectionButtons.forEach((button) => {
