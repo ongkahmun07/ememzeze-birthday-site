@@ -49,7 +49,7 @@ const sharedMemories = Array.from({ length: 28 }, (_, index) => ({
                                   : index === 18
                                     ? "DO U RMB THIS HHAHAHAHAHA"
                                     : index === 19
-                                      ? "bishan park cat"
+                                      ? "concert etoile"
                                       : index === 20
                                         ? "lets visit him soon"
                                         : index === 22
