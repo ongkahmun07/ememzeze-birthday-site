@@ -15,7 +15,12 @@ const LETTER_STORAGE_KEY = "bestie-birthday-letter";
 const MEMORIES_STORAGE_KEY = "birthday-memory-gallery";
 const galleryTilts = ["-3deg", "2deg", "-2deg", "3deg", "-1deg", "1.5deg"];
 const sharedMemories = Array.from({ length: 28 }, (_, index) => ({
-  name: index === 0 ? "one of many bouquets in school" : `memory ${String(index + 1).padStart(2, "0")}`,
+  name:
+    index === 0
+      ? "one of many bouquets in school"
+      : index === 1
+        ? "school concerts!"
+        : `memory ${String(index + 1).padStart(2, "0")}`,
   src: `assets/memories/memory-${String(index + 1).padStart(2, "0")}.jpeg`,
 }));
 
