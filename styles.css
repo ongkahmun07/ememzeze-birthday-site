@@ -257,30 +257,87 @@ h3 {
 
 .floating-heart {
   position: absolute;
-  width: 24px;
-  height: 24px;
-  background: #ffb8d3;
-  transform: rotate(45deg);
-  border-radius: 5px;
+  width: 42px;
+  height: 34px;
+  background: #ffc1d8;
+  border-radius: 22px 22px 16px 16px;
   animation: drift 4.6s ease-in-out infinite;
+  box-shadow: 0 8px 18px rgba(247, 174, 202, 0.28);
 }
 
 .floating-heart::before,
 .floating-heart::after {
   content: "";
   position: absolute;
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
   background: inherit;
-  border-radius: 50%;
+  top: -7px;
+  border-radius: 4px 12px 4px 12px;
 }
 
 .floating-heart::before {
-  left: -12px;
+  left: 5px;
+  transform: rotate(-35deg);
 }
 
 .floating-heart::after {
-  top: -12px;
+  right: 5px;
+  transform: scaleX(-1) rotate(-35deg);
+}
+
+.floating-heart span {
+  position: absolute;
+  inset: 0;
+}
+
+.floating-heart span::before,
+.floating-heart span::after {
+  content: "";
+  position: absolute;
+  top: 13px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #8b5c6e;
+}
+
+.floating-heart span::before {
+  left: 12px;
+}
+
+.floating-heart span::after {
+  right: 12px;
+}
+
+.floating-heart i {
+  position: absolute;
+  left: 50%;
+  bottom: 7px;
+  width: 8px;
+  height: 6px;
+  transform: translateX(-50%);
+  border-radius: 50% 50% 70% 70%;
+  border-bottom: 2px solid #8b5c6e;
+}
+
+.floating-heart i::before,
+.floating-heart i::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  width: 8px;
+  height: 1.5px;
+  background: #8b5c6e;
+  border-radius: 999px;
+}
+
+.floating-heart i::before {
+  right: 7px;
+}
+
+.floating-heart i::after {
+  left: 7px;
 }
 
 .heart-one {
