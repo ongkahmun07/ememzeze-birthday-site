@@ -56,6 +56,8 @@ const sharedMemories = Array.from({ length: 28 }, (_, index) => ({
                                           ? "u and ur boyfriend"
                                           : index === 23
                                             ? "some house day or smth"
+                                            : index === 24
+                                              ? "we havent eaten this lets gooo"
         : `memory ${String(index + 1).padStart(2, "0")}`,
   src: `assets/memories/memory-${String(index + 1).padStart(2, "0")}.jpeg`,
 }));
