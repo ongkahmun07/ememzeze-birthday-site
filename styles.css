@@ -469,6 +469,11 @@ h3 {
   gap: 18px;
 }
 
+.letter-panel .field,
+.letter-panel .letter-actions {
+  display: none;
+}
+
 .field {
   display: grid;
   gap: 10px;
