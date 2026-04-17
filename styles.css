@@ -474,6 +474,11 @@ h3 {
   display: none;
 }
 
+.memories-panel .upload-dropzone,
+.memories-panel .memory-actions {
+  display: none;
+}
+
 .field {
   display: grid;
   gap: 10px;
